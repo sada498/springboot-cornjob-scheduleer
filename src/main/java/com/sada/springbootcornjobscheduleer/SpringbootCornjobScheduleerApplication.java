@@ -33,7 +33,9 @@ public class SpringbootCornjobScheduleerApplication {
 
 	@Scheduled(fixedRate = 2000L)
 	void someCornJob() throws  InterruptedException{
-		System.out.println(String.format("Australia current time [%d]",currentTime));
+		Date date=new Date();
+		String currentTime=String.valueOf(date);
+		System.out.println("Australia current time :" + currentTime);
 
 	}
 
