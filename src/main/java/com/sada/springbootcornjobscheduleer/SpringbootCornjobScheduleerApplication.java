@@ -19,7 +19,7 @@ public class SpringbootCornjobScheduleerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootCornjobScheduleerApplication.class, args);
-		System.out.println("hello");
+
 	}
 
 	@Configuration
@@ -35,10 +35,31 @@ public class SpringbootCornjobScheduleerApplication {
 	void someCornJob() throws  InterruptedException{
 		Date date=new Date();
 		String currentTime=String.valueOf(date);
-		System.out.println("Australia current time :" + currentTime);
-
+		//System.out.println("Australia current time :" + currentTime);
 	}
 
+	// add above method for thread sleep
+	//
+	@Scheduled(initialDelay = 1000L,fixedRate = 2000L)
+	void someCornJobTread() throws  InterruptedException{
+		Date date=new Date();
+		String currentTime=String.valueOf(date);
+		System.out.println("Australia current time :" + currentTime);
+		Thread.sleep(5000L);
+	}
+
+	/* By using java duration format for fixedDelayString
+	* For Example
+	* PT10M -> EVERY 10 minutes
+	* PT1H -> eVERY 1 Hour
+	*/
+	@Scheduled(initialDelay = 1000L,fixedDelayString = "PH1H")
+	void someCornJobTreadFixedDelayString() throws  InterruptedException{
+		Date date=new Date();
+		String currentTime=String.valueOf(date);
+		System.out.println("Australia current time :" + currentTime);
+		Thread.sleep(5000L);
+	}
 
 
 }
